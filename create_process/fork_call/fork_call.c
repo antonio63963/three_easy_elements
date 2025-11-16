@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 int main(int argc, char *argv[])
 {
@@ -17,7 +18,8 @@ int main(int argc, char *argv[])
   }
   else
   {
-    printf("hello, I am parent of %d (pid: %d)\n", rc, getpid());
+    int rc_wait = wait(NULL);
+    printf("hello, I am parent of %d, (rc_wait: %d), (pid: %d)\n", rc, rc_wait, getpid());
   }
 
   return 0;
