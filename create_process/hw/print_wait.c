@@ -13,12 +13,14 @@ int main(int argc, char *argv[])
   else if (rc == 0)
   {
     printf("Hello, (pid: %d)\n", getpid());
-    pid_t chP = wait(NULL);
+    int status;
+    pid_t chP = waitpid(rc, &status, 0);
     printf("CHP: %d\n", chP);
   }
   else
   {
-    pid_t wPid = wait(NULL);
+    int status;
+    pid_t wPid = waitpid(rc, &status, 0);
     printf("Goodbye (wPid: %d), (pid: %d)\n", wPid, getpid());
   }
 
